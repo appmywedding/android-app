@@ -1,8 +1,10 @@
 package com.mywedding.presentation.main.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Delete
@@ -19,9 +21,12 @@ import com.mywedding.ui.theme.MyWeddingTheme
 fun InvitedListView(invited: List<Invited>, onDelete: (Invited) -> Unit) {
     Column(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        verticalArrangement = Arrangement.Top
     ) {
-        InvitedView(invited = invited[0], onDelete = onDelete)
+        invited.forEach {
+            InvitedView(invited = it, onDelete = onDelete)
+        }
     }
 }
 
@@ -30,15 +35,20 @@ private fun InvitedView(invited: Invited, onDelete: (Invited) -> Unit) =
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .padding(8.dp)
+            .background(color = MaterialTheme.colors.background),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Column {
             Text(
                 invited.name,
                 fontSize = 30.sp
             )
-            Text(invited.number, fontSize = 24.sp)
+            Text(
+                invited.number,
+                fontSize = 22.sp,
+                color = MaterialTheme.colors.onBackground.copy(alpha = 0.6f)
+            )
         }
         Spacer(modifier = Modifier.weight(1.0f))
         Icon(
@@ -46,7 +56,8 @@ private fun InvitedView(invited: Invited, onDelete: (Invited) -> Unit) =
             Modifier
                 .height(40.dp)
                 .width(40.dp)
-                .clickable { onDelete(invited) }
+                .clickable { onDelete(invited) },
+            tint = MaterialTheme.colors.error
         )
     }
 
@@ -55,8 +66,11 @@ private fun InvitedView(invited: Invited, onDelete: (Invited) -> Unit) =
 fun DefaultPreview() {
     MyWeddingTheme {
         InvitedListView(
-            listOf(Invited(id = "", name = "Orel", number = "0543056286")),
-            onDelete = {println("This is delete on preview.")}
+            listOf(
+                Invited(id = "", name = "Orel", number = "0543056286"),
+                Invited(id = "", name = "Orel", number = "0543056286")
+            ),
+            onDelete = { println("This is delete on preview.") },
         )
     }
 }
