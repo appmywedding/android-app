@@ -2,10 +2,12 @@ package com.mywedding.data.local.interactors.invited
 
 import com.mywedding.data.local.LocalDatabase
 import com.mywedding.data.local.dao.InvitedDao
+import com.mywedding.data.remote.API
 import com.mywedding.domain.model.Invited
 import javax.inject.Inject
 
 class InvitedInteractorImpl @Inject constructor(
+    private val api: API,
     database: LocalDatabase
 ) : InvitedInteractor {
 
