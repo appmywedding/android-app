@@ -5,7 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'com.google.gms.google-services'
     id 'com.google.devtools.ksp' version '1.6.10-1.0.2'
-    id 'com.google.firebase.crashlytics'
+//    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -56,8 +56,8 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'androidx.activity:activity-compose:1.4.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -69,7 +69,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+//    implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.9"
 
     //Dagger - Hilt
@@ -96,4 +96,6 @@ dependencies {
     // Material
     implementation 'com.google.android.material:material:1.6.0'
 
+    // Retrofit 2
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 }
